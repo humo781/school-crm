@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+    <h1>Guruh ma'lumotlari</h1>
+    <div class="group-details">
+        <div class="group-info">
+            <h2>{{ group.name }}</h2>
+            <p>ID: {{ group.id }}</p>
+            <p>O'quvchilar soni: {{ group.student.groups.count }}</p>
+            <p>Sinf rahbari: {{ group.teacher }}</p>
+        </div>
+        <div class="group-students">
+            <h3>O'quvchilar ro'yxati</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Amallar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ group.id }}</td>
+                        <td>{{ group.student.full_name }}</td>
+                        <td><a href="student-detail.html"><button class="btn btn-info">Ko'rish</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="actions">
+        <a href="{{ group.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
+        <a href="{{ group.get_delete_url }}" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
+    </div>
+{% endblock %}
+
+// 27 korish nimani korsa
