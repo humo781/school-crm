@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} {% if group %} Update Group {% else %} Create Group {% endif %} {% endblock %}
+
+{% block content %}
+    <h1>{% if group %} Update Group {% else %} Guruh yaratish {% endif %}</h1>
+    <form method="post" id="createGroupForm">
+        {% csrf_token %}
+        <div class="form-group">
+            {# name #}
+            <label for="groupName">Guruh nomi:</label>
+            <input type="text" id="groupName" name="name" {% if group %} value="{{ group.name }}" {% endif %} placeholder="Guruh nomini kiriting" required>
+        </div>
+        <div class="form-group">
+            {# teacher #}
+            <label for="classTeacher">Sinf rahbari:</label>
+            <select id="classTeacher" name="teacher" required>
+                <option value="">Sinf rahbarini tanlang</option>
+                {% for teacher in teachers %}
+                    <option value="{{ teacher.pk }}"
+                    {% if group and group.teacher.id == teacher.id %}selected{% endif %}>
+                    {{ teacher.first_name }} {{ teacher.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            {# student #}
+            <label for="students">O'quvchilar:</label>
+            <select id="students" name="student" multiple required>
+                {% for student in students %}
+                    <option value="{{ student.pk }}"
+                    {% if student and student.id == student.id %}selected{% endif %}>
+                    {{ student.first_name }} {{ student.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="actions">
+            <button type="submit" class="btn"><i class="fas fa-save"></i>{% if group %} Tahrirlash {% else %} Saqlash {% endif %}</button>
+            <a href="{% url 'groups:list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Bekor qilish</a>
+        </div>
+    </form>
+{% endblock %}

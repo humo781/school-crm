@@ -1,0 +1,22 @@
+<div class="dashboard-grid">
+    <div class="card">
+        <h2>O'quvchilar</h2>
+            <p>Jami: <span id="studentCount">{{ students|length }}</span></p>
+            <a href="{% url 'students:list' %}" class="btn">Batafsil</a>
+    </div>
+    <div class="card">
+        <h2>O'qituvchilar</h2>
+        <p>Jami: <span id="teacherCount">{{ teachers|length }}</span></p>
+        <a href="{% url 'teachers:list' %}" class="btn">Batafsil</a>
+    </div>
+    <div class="card">
+        <h2>Guruhlar</h2>
+        <p>Jami: <span id="groupCount">{{ groups|length }}</span></p>
+        <a href="{% url 'groups:list' %}" class="btn">Batafsil</a>
+    </div>
+    <div class="card">
+        <h2>Fanlar</h2>
+        <p>Jami: <span id="subjectCount">{{ subjects|length }}</span></p>
+        <a href="{% url 'subjects:list' %}" class="btn">Batafsil</a>
+    </div>
+</div>

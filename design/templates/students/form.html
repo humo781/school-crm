@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}{% if student %}Update Student {% else %}Create Student{% endif %}{% endblock %}
+
+{% block content %}
+    <h1>{% if student %}O'quvchi tahrirlash {% else %}O'quvchi yaratish{% endif %}</h1>
+    <form method="post" id="createStudentForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="ism">Ism:</label>
+            <input type="text" id="ism" name="first_name"
+               {% if student %} value="{{ student.first_name }}" {% endif %}
+               placeholder="Jasurbek Ismoilov" required>
+        </div>
+        <div class="form-group">
+            <label for="familiya">Familiya:</label>
+            <input type="text" id="familiya" name="last_name"
+               {% if student %} value="{{ student.last_name }}" {% endif %}
+               placeholder="Jasurbek Ismoilov" required>
+        </div>
+        <div class="form-group">
+            <label for="group">Guruh:</label>
+            <select id="group" name="group" required>
+                <option value="">Guruhni tanlang</option>
+                {% for group in groups %}
+                    <option value="{{ group.id }}"
+                    {% if student.group and student.group.id == group.id %}selected{% endif %}>
+                    {{ group.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dob">Tug'ilgan sana:</label>
+            <input type="date" id="dob" name="dob" required
+            {% if student and student.birth_of_date %}value="{{ student.birth_of_date|date:'Y-m-d' }}"{% endif %}>
+        </div>
+        <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone" {% if student %}  value="{{ student.phone_number }}" {% endif %}
+               name="phone" placeholder="+998 90 123 45 67" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Manzil:</label>
+            <input type="text" id="address" {% if student %}  value="{{ student.address }}" {% endif %}
+               name="address" placeholder="Tashkent, Yunusobod" required>
+        </div>
+        <div class="form-group">
+            <label for="photo">Rasm:</label>
+            {% if student and student.image %}
+                <img src="{{ student.image.url }}" alt="Student Avatar" width="150" height="150">
+            {% endif %}
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
+        <div class="actions">
+            <button type="submit" class="btn">
+                <i class="fas fa-save"></i>{% if student %}Tahrirlash {% else %}Saqlash{% endif %}</button>
+            <a href="{% url 'students:list' %}" class="btn btn-secondary"><i class="fas fa-times"></i> Bekor qilish</a>
+        </div>
+    </form>
+{% endblock %}
