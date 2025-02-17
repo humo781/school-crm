@@ -27,7 +27,7 @@
                 <td>
                     <a href="{{ group.get_detail_url }}" class="btn btn-sm"><i class="fas fa-eye"></i> Ko'rish</a>
                     <a href="{{ group.get_update_url }}" class="btn btn-sm"><i class="fas fa-edit"></i> Tahrirlash</a>
-                    <a href="{{ group.get_delete_url }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
+                    <a href="{{ group.get_delete_url }}?next={{ request.path }}" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
                 </td>
             </tr>
         {% empty %}
@@ -35,11 +35,4 @@
         {% endfor %}
         </tbody>
     </table>
-<!--    <div class="pagination">-->
-<!--        <a href="#" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Oldingi</a>-->
-<!--        <span>1</span>-->
-<!--        <a href="#" class="btn btn-secondary">Keyingi <i class="fas fa-chevron-right"></i></a>-->
-<!--    </div>-->
 {% endblock %}
-
-// paginatsiya vaqting bolsa togirla

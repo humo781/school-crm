@@ -17,6 +17,6 @@
 </div>
 <div class="actions">
     <a href="{{ teacher.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
-    <a href="{{ teacher.get_delete_url }}" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
+    <a href="{{ teacher.get_delete_url }}?next={{ request.path }}" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
 </div>
 {% endblock %}

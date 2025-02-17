@@ -39,7 +39,7 @@ def student_update(request, pk):
         last_name = request.POST.get('last_name')
         group_id = request.POST.get('group')
         dob = request.POST.get('dob')
-        phone = request.POST.getlist('phone')
+        phone = request.POST.get('phone')
         address = request.POST.get('address')
         photo = request.FILES.get('photo')
         group = get_object_or_404(Group, pk=group_id)

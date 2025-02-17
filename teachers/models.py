@@ -6,7 +6,7 @@ from subjects.models import Subject
 class Teacher(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    subject = models.OneToOneField(Subject, on_delete=models.CASCADE, related_name='teachers')
+    subject = models.ManyToManyField(Subject, related_name='teachers')
     phone_number = models.CharField(max_length=14)
     email = models.EmailField()
     experience = models.FloatField()

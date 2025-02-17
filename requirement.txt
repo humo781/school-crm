@@ -56,4 +56,3 @@ del_conf 2 joydan kirib 2 ta joyga chiqishi kerak cancel ni bosganda
 studentning phone_numberini array qilib saqlab qoyyapti
 teacherda muammo yoq
 groupda muammo yo'q
-

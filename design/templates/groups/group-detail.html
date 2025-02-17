@@ -23,7 +23,7 @@
                 <tbody>
                 {% for student in group.students.all %}
                     <tr>
-                        <td>{{ group.id }}</td>
+                        <td>{{ student.id }}</td>
                         <td>{{ student.first_name }} {{ student.last_name }}</td>
                         <td><a href="{{ student.get_detail_url }}" class="btn btn-info">Ko'rish</a></td>
                     </tr>
@@ -34,7 +34,7 @@
     </div>
     <div class="actions">
         <a href="{{ group.get_update_url }}" class="btn"><i class="fas fa-edit"></i> Tahrirlash</a>
-        <a href="{{ group.get_delete_url }}" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
+        <a href="{{ group.get_delete_url }}?next={{ request.path }}" class="btn btn-danger"><i class="fas fa-trash"></i> O'chirish</a>
     </div>
 {% endblock %}
 

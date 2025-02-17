@@ -2,11 +2,21 @@
     <nav>
         <div class="logo">Maktab CRM</div>
         <ul>
-            <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Bosh sahifa</a></li>
-            <li><a href="{% url 'students:list' %}"><i class="fas fa-user-graduate"></i> O'quvchilar</a></li>
-            <li><a href="{% url 'teachers:list' %}" class="active"><i class="fas fa-chalkboard-teacher"></i> O'qituvchilar</a></li>
-            <li><a href="{% url 'groups:list' %}"><i class="fas fa-users"></i> Guruhlar</a></li>
-            <li><a href="{% url 'subjects:list' %}"><i class="fas fa-book"></i> Fanlar</a></li>
+            <li><a href="{% url 'home' %}" {% if request.path == '/' %} class="active" {% endif %}><i class="fas fa-home">
+                </i> Bosh sahifa</a>
+            </li>
+            <li><a href="{% url 'students:list' %}" {% if '/student/list/' in request.path %} class="active" {% endif %}>
+                <i class="fas fa-user-graduate"></i> O'quvchilar</a>
+            </li>
+            <li><a href="{% url 'teachers:list' %}" {% if '/teacher/list/' in request.path %} class="active" {% endif %}>
+                <i class="fas fa-chalkboard-teacher"></i> O'qituvchilar</a>
+            </li>
+            <li><a href="{% url 'groups:list' %}" {% if '/group/list/' in request.path %} class="active" {% endif %}>
+                <i class="fas fa-users"></i> Guruhlar</a>
+            </li>
+            <li><a href="{% url 'subjects:list' %}" {% if '/subject/list/' in request.path %} class="active" {% endif %}>
+                <i class="fas fa-book"></i> Fanlar</a>
+            </li>
         </ul>
     </nav>
 </header>
